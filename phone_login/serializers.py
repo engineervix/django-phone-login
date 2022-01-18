@@ -13,14 +13,13 @@ class PhoneTokenCreateSerializer(ModelSerializer):
 
     class Meta:
         model = PhoneToken
-        fields = ('pk', 'phone_number')
+        fields = ("pk", "phone_number")
 
 
 class PhoneTokenUser(ModelSerializer):
-
     class Meta:
         model = User
-        fields = '__all__'
+        fields = "__all__"
 
 
 class PhoneTokenValidateSerializer(ModelSerializer):
@@ -29,4 +28,4 @@ class PhoneTokenValidateSerializer(ModelSerializer):
 
     class Meta:
         model = PhoneToken
-        fields = ('pk', 'otp')
+        fields = ("pk", "otp")

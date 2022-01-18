@@ -4,4 +4,4 @@ from django.apps import AppConfig
 
 
 class DjangoPhoneConfig(AppConfig):
-    name = 'phone_login'
+    name = "phone_login"

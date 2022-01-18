@@ -1,8 +1,10 @@
-from django.conf.urls import url
+from django.urls import re_path
 
 from .views import GenerateOTP, ValidateOTP
 
+app_name = "phone_login"
+
 urlpatterns = [
-    url(r'^generate/$', GenerateOTP.as_view(), name="generate"),
-    url(r'^validate/$', ValidateOTP.as_view(), name="validate"),
+    re_path(r"^generate/$", GenerateOTP.as_view(), name="generate"),
+    re_path(r"^validate/$", ValidateOTP.as_view(), name="validate"),
 ]

@@ -6,9 +6,7 @@ from rest_framework.generics import CreateAPIView
 from rest_framework.response import Response
 
 from .models import PhoneToken
-from .serializers import (
-    PhoneTokenCreateSerializer, PhoneTokenValidateSerializer
-)
+from .serializers import PhoneTokenCreateSerializer, PhoneTokenValidateSerializer
 from .utils import user_detail
 
 
@@ -18,27 +16,24 @@ class GenerateOTP(CreateAPIView):
 
     def post(self, request, format=None):
         # Get the patient if present or result None.
-        ser = self.serializer_class(
-            data=request.data,
-            context={'request': request}
-        )
+        ser = self.serializer_class(data=request.data, context={"request": request})
         if ser.is_valid():
-            token = PhoneToken.create_otp_for_number(
-                request.data.get('phone_number')
-            )
+            token = PhoneToken.create_otp_for_number(request.data.get("phone_number"))
             if token:
-                phone_token = self.serializer_class(
-                    token, context={'request': request}
-                )
+                phone_token = self.serializer_class(token, context={"request": request})
                 data = phone_token.data
-                if getattr(settings, 'PHONE_LOGIN_DEBUG', False):
-                    data['debug'] = token.otp
+                if getattr(settings, "PHONE_LOGIN_DEBUG", False):
+                    data["debug"] = token.otp
                 return Response(data)
-            return Response({
-                'reason': "you can not have more than {n} attempts per day, please try again tomorrow".format(
-                    n=getattr(settings, 'PHONE_LOGIN_ATTEMPTS', 10))}, status=status.HTTP_403_FORBIDDEN)
-        return Response(
-            {'reason': ser.errors}, status=status.HTTP_406_NOT_ACCEPTABLE)
+            return Response(
+                {
+                    "reason": "you can not have more than {n} attempts per day, please try again tomorrow".format(
+                        n=getattr(settings, "PHONE_LOGIN_ATTEMPTS", 10)
+                    )
+                },
+                status=status.HTTP_403_FORBIDDEN,
+            )
+        return Response({"reason": ser.errors}, status=status.HTTP_406_NOT_ACCEPTABLE)
 
 
 class ValidateOTP(CreateAPIView):
@@ -47,9 +42,7 @@ class ValidateOTP(CreateAPIView):
 
     def post(self, request, format=None):
         # Get the patient if present or result None.
-        ser = self.serializer_class(
-            data=request.data, context={'request': request}
-        )
+        ser = self.serializer_class(data=request.data, context={"request": request})
         if ser.is_valid():
             pk = request.data.get("pk")
             otp = request.data.get("otp")
@@ -62,8 +55,7 @@ class ValidateOTP(CreateAPIView):
                 return Response(response, status=status.HTTP_200_OK)
             except ObjectDoesNotExist:
                 return Response(
-                    {'reason': "OTP doesn't exist"},
-                    status=status.HTTP_406_NOT_ACCEPTABLE
+                    {"reason": "OTP doesn't exist"},
+                    status=status.HTTP_406_NOT_ACCEPTABLE,
                 )
-        return Response(
-            {'reason': ser.errors}, status=status.HTTP_406_NOT_ACCEPTABLE)
+        return Response({"reason": ser.errors}, status=status.HTTP_406_NOT_ACCEPTABLE)
