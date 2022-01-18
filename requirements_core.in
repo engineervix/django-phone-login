@@ -1,0 +1,44 @@
+# core
+django[argon2,bcrypt]>=3.2,<4.0
+djangorestframework
+django-phonenumber-field[phonenumbers]
+django-sendsms
+
+# dev
+bpython
+black
+commitizen
+doc8
+flake8
+invoke
+isort[requirements_deprecated_finder]
+pip-chill
+pipdeptree
+pip-tools
+pep8
+seed-isort-config
+
+# testing
+pytest
+pytest-cov
+pytest-django
+pytest-logger
+pytest-pythonpath
+pytest-sugar
+tox
+
+# docs
+mkdocs
+recommonmark
+Sphinx
+sphinx_rtd_theme
+
+# optional
+Markdown
+
+# dist
+build
+pypandoc
+transifex-client
+twine
+wheel

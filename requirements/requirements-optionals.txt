@@ -1,2 +1,2 @@
 # Optional packages which may be used with REST framework.
-Markdown==2.6.6
+markdown==3.3.6
