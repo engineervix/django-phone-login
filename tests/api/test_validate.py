@@ -9,21 +9,17 @@ User = get_user_model()
 
 
 class PhoneTokenValidationTests(APITestCase):
-
     def test_token_validation(self):
         # Generate a token with phone number
         phone_number = "+01 9212128291"
-        otp = '0944'
-        token = PhoneToken.objects.create(
-            phone_number=phone_number,
-            otp=otp
-        )
+        otp = "0944"
+        token = PhoneToken.objects.create(phone_number=phone_number, otp=otp)
         self.assertIsNotNone(token.pk)
-        url = reverse('phone_login:validate')
-        data = {'pk': token.pk, 'otp': otp}
-        response = self.client.post(url, data, format='json')
-        self.assertIsNotNone(response.data['token'])
-        self.assertIsNotNone(response.data['status'], status.HTTP_200_OK)
+        url = reverse("phone_login:validate")
+        data = {"pk": token.pk, "otp": otp}
+        response = self.client.post(url, data, format="json")
+        self.assertIsNotNone(response.data["token"])
+        self.assertIsNotNone(response.data["status"], status.HTTP_200_OK)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(User.objects.count(), 1)
 

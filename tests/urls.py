@@ -1,5 +1,8 @@
-from django.conf.urls import include, url
+from django.urls import include, re_path
 
 urlpatterns = [
-    url(r'^otp/', include('phone_login.urls', namespace='phone_login'),),
+    re_path(
+        r"^otp/",
+        include("phone_login.urls", namespace="phone_login"),
+    ),
 ]
