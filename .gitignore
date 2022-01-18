@@ -10,6 +10,8 @@ dist
 *.sqlite3
 *~
 .*
+!.github/
+!.versionrc
 
 /site/
 /htmlcov/
