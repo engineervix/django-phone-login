@@ -1,15 +1,18 @@
 <h1 align="center">Django Phone Login</h1>
 
 <p align="center">
+<a href="https://python3statement.org/#sections50-why" target="_blank">
+  <img src="https://img.shields.io/badge/python-3.6%20%7C%203.7%20%7C%203.8%20%7C%203.9%20%7C%203.10-brightgreen.svg" alt="python3">
+</a>
 <a href="https://github.com/engineervix/django-phone-login/actions/workflows/main.yml" target="_blank">
   <img src="https://github.com/engineervix/django-phone-login/actions/workflows/main.yml/badge.svg" alt="Build Status">
 </a>
 <a href="https://codecov.io/gh/engineervix/django-phone-login" target="_blank">
   <img src="https://codecov.io/gh/engineervix/django-phone-login/branch/master/graph/badge.svg" alt="codecov">
 </a>
-<a href="https://github.com/engineervix/django-phone-login/commits/master" target="_blank">
+<!-- <a href="https://github.com/engineervix/django-phone-login/commits/master" target="_blank">
   <img alt="GitHub commits since latest release (by SemVer)" src="https://img.shields.io/github/commits-since/engineervix/django-phone-login/latest/master">
-</a>
+</a> -->
 </p>
 
 This is a fork of <https://github.com/wejhink/django-phone-login> – an excellent package that allows for login via phone number with no additional passwords for the user to remember.
